@@ -26,6 +26,7 @@ document.querySelector("#action").onsubmit = function(){
   }
   addBookToLibrary(bookDetails);
   printLibrary();
+  clear();
   return false;
 }
 
@@ -36,11 +37,38 @@ function printLibrary(){
   container.appendChild(cell).className = "book-div";
   let book = document.createElement("p");
   cell.appendChild(book);
-  book.textContent = myLibrary[myLibrary.length-1].author + myLibrary[myLibrary.length-1].title + myLibrary[myLibrary.length-1].pages + myLibrary[myLibrary.length-1].read;
+  book.textContent = myLibrary[myLibrary.length-1].author + myLibrary[myLibrary.length-1].title 
+  + myLibrary[myLibrary.length-1].pages + myLibrary[myLibrary.length-1].read;
+  let button = document.createElement("button");
+  button.textContent = 'X';
+  button.setAttribute('class','remove');
+  book.appendChild(button);
+  removeBook();
 }
+
+function removeBook(){
+  if (myLibrary.length > 0){
+    let buttons = document.querySelectorAll('.remove');
+    buttons.forEach(function(element){
+        element.addEventListener('click',function(){
+            element.parentElement.remove();
+          }  
+        )
+      }
+    )
+  }
+}  
 
 const addNew = document.querySelector("#add-new");
 addNew.addEventListener('click', function(){
   const action = document.querySelector("#action");
   action.classList.remove("d-none");
-})
+  addNew.classList.add("d-none");
+});
+
+function clear(){
+  document.querySelector("#author").value = '';
+  document.querySelector("#title").value = '';
+  document.querySelector("#pages").value = '';
+  document.querySelector("#read").checked = false;
+}
