@@ -18,21 +18,25 @@ document.querySelector("#action").onsubmit = function(){
   bookDetails.author = document.querySelector("#author").value;
   bookDetails.title = document.querySelector("#title").value;
   bookDetails.pages = document.querySelector("#pages").value;
-  bookDetails.read = document.querySelector("#read").value;
+  if(document.querySelector("#read").checked == true){
+    bookDetails.read = "Read";
+  }
+  else{
+    bookDetails.read = "Unread";
+  }
   addBookToLibrary(bookDetails);
   printLibrary();
+  return false;
 }
 
 const container = document.querySelector("#books");
 
 function printLibrary(){
-  for(let i = 0; i < myLibrary.length; i++){
-    let cell = document.createElement("div");
-    container.appendChild(cell).className = "book-div";
-    let book = document.createElement("p");
-    cell.appendChild(book);
-    book.textContent = myLibrary[i].author + myLibrary[i].title + myLibrary[i].pages + myLibrary[i].read;
-  }
+  let cell = document.createElement("div");
+  container.appendChild(cell).className = "book-div";
+  let book = document.createElement("p");
+  cell.appendChild(book);
+  book.textContent = myLibrary[myLibrary.length-1].author + myLibrary[myLibrary.length-1].title + myLibrary[myLibrary.length-1].pages + myLibrary[myLibrary.length-1].read;
 }
 
 const addNew = document.querySelector("#add-new");
