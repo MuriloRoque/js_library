@@ -22,12 +22,7 @@ document.querySelector("#action").onsubmit = function(){
   bookDetails.author = document.querySelector("#author").value;
   bookDetails.title = document.querySelector("#title").value;
   bookDetails.pages = document.querySelector("#pages").value;
-  if(document.querySelector("#read").checked == true){
-    bookDetails.read = "Read";
-  }
-  else{
-    bookDetails.read = "Unread";
-  }
+  bookDetails.read = "Unread";
   addBookToLibrary(bookDetails);
   printLibrary();
   clear();
@@ -52,11 +47,38 @@ function printLibrary(){
   pages.textContent = myLibrary[myLibrary.length-1].pages;
   read.textContent = myLibrary[myLibrary.length-1].read;
   let button = document.createElement("button");
+  let readButton = document.createElement("button");
+  readButton.textContent = "Mark as read";
+  readButton.setAttribute('class','read-button');
+  readButton.setAttribute('value', myLibrary[myLibrary.length-1].id);
+  book.appendChild(readButton);
   button.textContent = 'X';
   button.setAttribute('class','remove');
   button.setAttribute('value', myLibrary[myLibrary.length-1].id);
   book.appendChild(button);
   removeBook();
+  readBook();
+}
+function readBook(){
+  let readSingle = document.querySelectorAll('.read-button');
+  readSingle.forEach(function(element){
+    element.addEventListener('click',function(){
+      if(myLibrary[element.value-1].read == "Read"){
+        element.textContent = "Mark as read";
+        myLibrary[element.value-1].read = "Unread";
+        let parent = element.parentElement;
+        let children = parent.children;
+        children[3].textContent = "Unread";
+      }
+      else{
+        element.textContent = "Mark as unread";
+        myLibrary[element.value-1].read = "Read";
+        let parent = element.parentElement;
+        let children = parent.children;
+        children[3].textContent = "Read";
+      }
+    }) 
+  })
 }
 
 function removeBook(){
@@ -84,5 +106,4 @@ function clear(){
   document.querySelector("#author").value = '';
   document.querySelector("#title").value = '';
   document.querySelector("#pages").value = '';
-  document.querySelector("#read").checked = false;
 }
