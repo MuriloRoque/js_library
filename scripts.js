@@ -7,13 +7,14 @@ function Book(author, title, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(author, title, pages, read) {
-  let book = new Book(author, title, pages, read);
+function addBookToLibrary(bookDetails) {
+  let book = new Book(bookDetails.author, bookDetails.title, bookDetails.pages, bookDetails.read);
   myLibrary.push(book);
 }
 
-let author = prompt("Choose a book author");
-let title = prompt("Choose a book title");
-let pages = prompt("Choose the number of pages");
-let read = prompt("Was it read by you?");
-addBookToLibrary(author, title, pages, read);
+const bookDetails = {}
+bookDetails.author = prompt("Choose a book author");
+bookDetails.title = prompt("Choose a book title");
+bookDetails.pages = prompt("Choose the number of pages");
+bookDetails.read = prompt("Was it read by you?");
+addBookToLibrary(bookDetails);
