@@ -19,7 +19,7 @@ const bookDetails = {}
 // bookDetails.read = prompt("Was it read by you?");
 addBookToLibrary(bookDetails);
 
-const container = document.getElementById("books");
+const container = document.querySelector("#books");
 
 for(let i = 0; i < myLibrary.length; i++){
   let cell = document.createElement("div");
@@ -28,3 +28,9 @@ for(let i = 0; i < myLibrary.length; i++){
   cell.appendChild(book);
   book.textContent = myLibrary[i].author + myLibrary[i].title + myLibrary[i].pages + myLibrary[i].read;
 }
+
+const addNew = document.querySelector("#add-new");
+addNew.addEventListener('click', function(){
+  const action = document.querySelector("#action");
+  action.classList.remove("d-none");
+})
