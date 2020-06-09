@@ -8,15 +8,16 @@
     <title>Library</title>
   </head>
   <body>
-    <form action="#" class="d-none" id="action">
+    <form name="form" action="#" class="d-none" id="action">
       <label for="name">Name</label>
-      <input type="text" placeholder="add the book's author">
+      <input id="author" name="author" type="text" placeholder="add the book's author">
       <label for="title">Title</label>
-      <input type="text" placeholder="add the book's title">
+      <input id="title" name="title" type="text" placeholder="add the book's title">
       <label for="pages">Pages</label>
-      <input type="number" placeholder="add the book's pages">
+      <input id="pages" name="pages" type="number" placeholder="add the book's pages">
       <label for="read">Read</label>
-      <input type="checkbox">
+      <input id="read" name="read" type="checkbox">
+      <input value="Submit" type="submit">
     </form>
     <button id="add-new">Add New</button>
     <div id="books">
