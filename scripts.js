@@ -13,10 +13,10 @@ function addBookToLibrary(bookDetails) {
 }
 
 const bookDetails = {}
-bookDetails.author = prompt("Choose a book author");
-bookDetails.title = prompt("Choose a book title");
-bookDetails.pages = prompt("Choose the number of pages");
-bookDetails.read = prompt("Was it read by you?");
+// bookDetails.author = prompt("Choose a book author");
+// bookDetails.title = prompt("Choose a book title");
+// bookDetails.pages = prompt("Choose the number of pages");
+// bookDetails.read = prompt("Was it read by you?");
 addBookToLibrary(bookDetails);
 
 const container = document.getElementById("books");
