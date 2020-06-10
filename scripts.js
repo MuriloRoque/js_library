@@ -66,22 +66,24 @@ function printLibrary(bookDetails){
 function readBook(){
   let readSingle = document.querySelectorAll('.read-button');
   readSingle.forEach(function(element){
-    element.addEventListener('click',function(){
-      if(myLibrary[element.value-1].read == "Read"){
-        element.textContent = "Mark as read";
-        myLibrary[element.value-1].read = "Unread";
-        let parent = element.parentElement;
-        let children = parent.children;
-        children[3].textContent = "Unread";
-      }
-      else{
-        element.textContent = "Mark as unread";
-        myLibrary[element.value-1].read = "Read";
-        let parent = element.parentElement;
-        let children = parent.children;
-        children[3].textContent = "Read";
-      }
-    }) 
+    readEvent(element);
+  })
+}
+
+function readEvent(element){
+  element.addEventListener('click',function(){
+    let parent = element.parentElement;
+    let children = parent.children;
+    if(myLibrary[element.value-1].read === "Read"){
+      element.textContent = "Mark as read";
+      myLibrary[element.value-1].read = "Unread";
+      children[3].textContent = "Unread";
+    }
+    else{
+      element.textContent = "Mark as unread";
+      myLibrary[element.value-1].read = "Read";
+      children[3].textContent = "Read";
+    }
   })
 }
 
@@ -89,15 +91,17 @@ function removeBook(){
   if (myLibrary.length > 0){
     let buttons = document.querySelectorAll('.remove');
     buttons.forEach(function(element){
-        element.addEventListener('click',function(){
-            delete myLibrary[element.value-1];
-            element.parentElement.remove();
-          }  
-        )
-      }
-    )
+      removeEvent(element);
+    })
   }
 }  
+
+function removeEvent(element){
+  element.addEventListener('click',function(){
+    delete myLibrary[element.value-1];
+    element.parentElement.remove();
+  })
+}
 
 const addNew = document.querySelector("#add-new");
 addNew.addEventListener('click', function(){
