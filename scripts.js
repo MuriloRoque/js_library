@@ -16,60 +16,10 @@ function addBookToLibrary({
   myLibrary.push(book);
 }
 
-document.querySelector('#action').onsubmit = function () {
-  count++;
-  const bookDetails = {
-    id: count,
-    author: document.querySelector('#author').value,
-    title: document.querySelector('#title').value,
-    pages: document.querySelector('#pages').value,
-    read: 'Unread',
-  };
-
-  addBookToLibrary(bookDetails);
-  printLibrary(bookDetails);
-  clear();
-  return false;
-};
-
-const container = document.querySelector('#books');
-
 function appendElement(element, parent, classElement = '') {
   const child = document.createElement(element);
   parent.appendChild(child).className = classElement;
   return child;
-}
-
-
-function printLibrary(bookDetails) {
-  const book = appendElement('div', container, 'book-div');
-  const bookProperties = Object.keys(bookDetails);
-  bookProperties.shift();
-  let child = '';
-  for (const key of bookProperties) {
-    child = appendElement('p', book);
-    child.textContent = myLibrary[myLibrary.length - 1][key];
-  }
-
-  const readButton = appendElement('button', book);
-  const deleteButton = appendElement('button', book);
-
-  readButton.textContent = 'Mark as read';
-  readButton.setAttribute('class', 'read-button');
-  readButton.setAttribute('value', myLibrary[myLibrary.length - 1].id);
-  deleteButton.textContent = 'X';
-  deleteButton.setAttribute('class', 'remove');
-  deleteButton.setAttribute('value', myLibrary[myLibrary.length - 1].id);
-
-  removeBook();
-  readBook();
-}
-
-function readBook() {
-  const readSingle = document.querySelectorAll('.read-button');
-  readSingle.forEach((element) => {
-    readEvent(element);
-  });
 }
 
 function readEvent(element) {
@@ -88,13 +38,11 @@ function readEvent(element) {
   });
 }
 
-function removeBook() {
-  if (myLibrary.length > 0) {
-    const buttons = document.querySelectorAll('.remove');
-    buttons.forEach((element) => {
-      removeEvent(element);
-    });
-  }
+function readBook() {
+  const readSingle = document.querySelectorAll('.read-button');
+  readSingle.forEach((element) => {
+    readEvent(element);
+  });
 }
 
 function removeEvent(element) {
@@ -104,15 +52,64 @@ function removeEvent(element) {
   });
 }
 
-const addNew = document.querySelector('#add-new');
-addNew.addEventListener('click', () => {
-  const action = document.querySelector('#action');
-  action.classList.remove('d-none');
-  addNew.classList.add('d-none');
-});
+function removeBook() {
+  if (myLibrary.length > 0) {
+    const buttons = document.querySelectorAll('.remove');
+    buttons.forEach((element) => {
+      removeEvent(element);
+    });
+  }
+}
+
+const container = document.querySelector('#books');
+
+function printLibrary(bookDetails) {
+  const book = appendElement('div', container, 'book-div');
+  const bookProperties = Object.keys(bookDetails);
+  bookProperties.shift();
+  let child = '';
+  bookProperties.forEach((key) => {
+    child = appendElement('p', book);
+    child.textContent = myLibrary[myLibrary.length - 1][key];
+  });
+  const readButton = appendElement('button', book);
+  const deleteButton = appendElement('button', book);
+  readButton.textContent = 'Mark as read';
+  readButton.setAttribute('class', 'read-button');
+  readButton.setAttribute('value', myLibrary[myLibrary.length - 1].id);
+  deleteButton.textContent = 'X';
+  deleteButton.setAttribute('class', 'remove');
+  deleteButton.setAttribute('value', myLibrary[myLibrary.length - 1].id);
+  removeBook();
+  readBook();
+}
 
 function clear() {
   document.querySelector('#author').value = '';
   document.querySelector('#title').value = '';
   document.querySelector('#pages').value = '';
 }
+
+const form = document.querySelector('#action');
+
+form.onsubmit = () => {
+  count += 1;
+  const bookDetails = {
+    id: count,
+    author: document.querySelector('#author').value,
+    title: document.querySelector('#title').value,
+    pages: document.querySelector('#pages').value,
+    read: 'Unread',
+  };
+  addBookToLibrary(bookDetails);
+  printLibrary(bookDetails);
+  clear();
+  return false;
+};
+
+const addNew = document.querySelector('#add-new');
+addNew.addEventListener('click', () => {
+  const action = document.querySelector('#action');
+  action.classList.remove('d-none');
+  addNew.classList.add('d-none');
+});
