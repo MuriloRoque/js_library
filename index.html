@@ -8,18 +8,26 @@
     <title>Library</title>
   </head>
   <body>
+    <h1>Library</h1>
     <form name="form" class="d-none" id="action">
       <label for="name">Name</label>
-      <input id="author" name="author" type="text" placeholder="add the book's author" required>
+      <input id="author" name="author" type="text" placeholder="Add the book's author" required>
       <label for="title">Title</label>
-      <input id="title" name="title" type="text" placeholder="add the book's title" required>
+      <input id="title" name="title" type="text" placeholder="Add the book's title" required>
       <label for="pages">Pages</label>
-      <input id="pages" name="pages" type="number" placeholder="add the book's pages" required>
+      <input id="pages" name="pages" type="number" placeholder="Add the book's pages" required>
       <input value="Submit" type="submit">
     </form>
-    <button id="add-new">Add New</button>
+    <button id="add-new">Add New Book</button>
     <div id="books">
-
+      <div class="book-title">
+        <p>Book Author</p>
+        <p>Book Title</p>
+        <p>Book Pages</p>
+        <p>Book Status</p>
+        <p>Mark read/unread</p>
+        <p>Delete</p>
+      </div>
     </div>
   </body>
 <script src="scripts.js"></script>
