@@ -9,56 +9,60 @@ function Book(id, author, title, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(bookDetails) {
-  let book = new Book(bookDetails.id, bookDetails.author, bookDetails.title, bookDetails.pages, bookDetails.read);
+function addBookToLibrary({id, author, title, pages, read}) {
+  let book = new Book(id, author, title, pages, read);
   myLibrary.push(book);
 }
 
-const bookDetails = {}
-
 document.querySelector("#action").onsubmit = function(){
   count++;
-  bookDetails.id = count;
-  bookDetails.author = document.querySelector("#author").value;
-  bookDetails.title = document.querySelector("#title").value;
-  bookDetails.pages = document.querySelector("#pages").value;
-  bookDetails.read = "Unread";
+  const bookDetails = {
+    id: count,
+    author: document.querySelector("#author").value,
+    title: document.querySelector("#title").value,
+    pages: document.querySelector("#pages").value,
+    read: "Unread"
+  }
+  
   addBookToLibrary(bookDetails);
-  printLibrary();
+  printLibrary(bookDetails);
   clear();
   return false;
 }
 
 const container = document.querySelector("#books");
 
-function printLibrary(){
-  let book = document.createElement("div");
-  container.appendChild(book).className = "book-div";
-  let author = document.createElement("p");
-  let title = document.createElement("p");
-  let pages = document.createElement("p");
-  let read = document.createElement("p");
-  book.appendChild(author);
-  book.appendChild(title);
-  book.appendChild(pages);
-  book.appendChild(read);
-  author.textContent = myLibrary[myLibrary.length-1].author;
-  title.textContent = myLibrary[myLibrary.length-1].title;
-  pages.textContent = myLibrary[myLibrary.length-1].pages;
-  read.textContent = myLibrary[myLibrary.length-1].read;
-  let button = document.createElement("button");
-  let readButton = document.createElement("button");
+function appendElement(element, parent, classElement=''){
+  let child = document.createElement(element);
+  parent.appendChild(child).className = classElement;
+  return child;
+}
+
+
+function printLibrary(bookDetails){
+  let book = appendElement("div", container, "book-div");
+  const bookProperties = Object.keys(bookDetails);
+  bookProperties.shift();
+  let child = '';
+  for(const key of bookProperties){
+    child = appendElement("p", book);
+    child.textContent = myLibrary[myLibrary.length-1][key];
+  }
+
+  let readButton = appendElement("button", book);
+  let deleteButton = appendElement("button", book);
+
   readButton.textContent = "Mark as read";
   readButton.setAttribute('class','read-button');
   readButton.setAttribute('value', myLibrary[myLibrary.length-1].id);
-  book.appendChild(readButton);
-  button.textContent = 'X';
-  button.setAttribute('class','remove');
-  button.setAttribute('value', myLibrary[myLibrary.length-1].id);
-  book.appendChild(button);
+  deleteButton.textContent = 'X';
+  deleteButton.setAttribute('class','remove');
+  deleteButton.setAttribute('value', myLibrary[myLibrary.length-1].id);
+  
   removeBook();
   readBook();
 }
+
 function readBook(){
   let readSingle = document.querySelectorAll('.read-button');
   readSingle.forEach(function(element){
