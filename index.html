@@ -8,13 +8,13 @@
     <title>Library</title>
   </head>
   <body>
-    <form name="form" onsubmit="return(validate())" action="index.html" class="d-none" id="action">
+    <form name="form" class="d-none" id="action">
       <label for="name">Name</label>
-      <input id="author" name="author" type="text" placeholder="add the book's author">
+      <input id="author" name="author" type="text" placeholder="add the book's author" required>
       <label for="title">Title</label>
-      <input id="title" name="title" type="text" placeholder="add the book's title">
+      <input id="title" name="title" type="text" placeholder="add the book's title" required>
       <label for="pages">Pages</label>
-      <input id="pages" name="pages" type="number" placeholder="add the book's pages">
+      <input id="pages" name="pages" type="number" placeholder="add the book's pages" required>
       <input value="Submit" type="submit">
     </form>
     <button id="add-new">Add New</button>

@@ -1,6 +1,9 @@
 const myLibrary = [];
 let count = 0;
 
+printLibrary(bookDetails);
+JSON.parse(window.localStorage.getItem('user'))
+
 function Book(id, author, title, pages, read) {
   this.id = id;
   this.author = author;
@@ -14,6 +17,7 @@ function addBookToLibrary({
 }) {
   const book = new Book(id, author, title, pages, read);
   myLibrary.push(book);
+  localStorage.setItem(toString(book.id), JSON.stringify(book));
 }
 
 function appendElement(element, parent, classElement = '') {
