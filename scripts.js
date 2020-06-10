@@ -1,8 +1,15 @@
 const myLibrary = [];
 let count = 0;
+const container = document.querySelector('#books');
 
-printLibrary(bookDetails);
-JSON.parse(window.localStorage.getItem('user'))
+for(let i = 0; i < localStorage.length; i++){
+  let keyName = localStorage.key(i);
+  let bookObject = JSON.parse(localStorage.getItem(keyName));
+  myLibrary.push(bookObject);
+  count += 1;
+  printLibrary(myLibrary[i]);
+}
+
 
 function Book(id, author, title, pages, read) {
   this.id = id;
@@ -17,7 +24,7 @@ function addBookToLibrary({
 }) {
   const book = new Book(id, author, title, pages, read);
   myLibrary.push(book);
-  localStorage.setItem(toString(book.id), JSON.stringify(book));
+  localStorage.setItem(book.id, JSON.stringify(book));
 }
 
 function appendElement(element, parent, classElement = '') {
@@ -48,8 +55,6 @@ function removeBook(deleteButton) {
     deleteButton.parentElement.remove();
   });
 }
-
-const container = document.querySelector('#books');
 
 function printLibrary(bookDetails) {
   const book = appendElement('div', container, 'book-div');
