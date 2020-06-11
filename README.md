@@ -7,7 +7,7 @@ In this project, we will be building a library.
 
 ## Live Demo
 
-[Click for live webpage](https://rawcdn.githack.com/MuriloRoque/library/28d12fd662ac68b4cb41036696078f83fd5ff0fa/index.html)
+[Click for live webpage](https://theophile-kango.github.io/library)
 
 ## Built With
 
