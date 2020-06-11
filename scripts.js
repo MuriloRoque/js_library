@@ -23,7 +23,7 @@ function printLibrary(bookDetails) {
   });
   const readButton = appendElement('button', book);
   const deleteButton = appendElement('button', book);
-  readButton.textContent = 'Mark as read';
+  readButton.textContent = 'Change read status';
   readButton.setAttribute('class', 'read-button');
   readButton.setAttribute('value', myLibrary[myLibrary.length - 1].id);
   deleteButton.textContent = 'X';
@@ -48,10 +48,12 @@ function addBookToLibrary({
   myLibrary.push(book);
 }
 
-function clear() {
-  document.querySelector('#author').value = '';
-  document.querySelector('#title').value = '';
-  document.querySelector('#pages').value = '';
+function readUnread() {
+  if (document.querySelector('#read').checked === true) {
+    return 'Read';
+  }
+
+  return 'Unread';
 }
 
 const form = document.querySelector('#action');
@@ -63,11 +65,11 @@ form.onsubmit = () => {
     author: document.querySelector('#author').value,
     title: document.querySelector('#title').value,
     pages: document.querySelector('#pages').value,
-    read: 'Unread',
+    read: readUnread(),
   };
   addBookToLibrary(bookDetails);
   printLibrary(bookDetails);
-  clear();
+  document.getElementById('action').reset();
   return false;
 };
 
