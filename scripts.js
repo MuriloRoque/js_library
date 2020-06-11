@@ -69,7 +69,7 @@ form.onsubmit = () => {
   };
   addBookToLibrary(bookDetails);
   printLibrary(bookDetails);
-  document.getElementById('action').reset();
+  form.reset();
   return false;
 };
 
