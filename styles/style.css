@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 30px;
+  background-color: #ddd;
+}
+
+.d-none {
+  display: none;
+}
+
+.book-div,
+.book-title {
+  background-color: #ccc;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px;
+}
+
+#add-new {
+  border: none;
+  padding: 15px;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(108, 108, 202);
+  color: white;
+  font-size: 1.2em;
+}
+
+.book-title p,
+.book-div p,
+.book-div button {
+  margin: 0;
+  padding: 10px 0;
+  display: block;
+  font-size: 20px;
+  width: 80%;
+}
+
+.book-title p {
+  font-weight: 700;
+}
+
+.book-div button {
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+form label,
+form input[type="submit"] {
+  margin-top: 10px;
+}
+
+form input {
+  height: 30px;
+  padding-left: 10px;
+}
+
+form input[type="submit"] {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(108, 108, 202);
+  color: white;
+}
