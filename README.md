@@ -7,7 +7,7 @@ In this project, we will be building a library.
 
 ## Live Demo
 
-[Click for live webpage](https://rawcdn.githack.com/MuriloRoque/library/ecb70030da343ad2a3a0f3d3ed5ab021c1beae09/index.html)
+[Click for live webpage](https://rawcdn.githack.com/MuriloRoque/library/a5c239bfeb9926d740947ffbd0534bdbc2471bfe/index.html)
 
 ## Built With
 
