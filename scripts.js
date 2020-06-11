@@ -52,15 +52,6 @@ function printLibrary(bookDetails) {
   readBook(readButton);
 }
 
-for (let i = 0; i < localStorage.length; i += 1) {
-  const keyName = localStorage.key(i);
-  const bookObject = JSON.parse(localStorage.getItem(keyName));
-  myLibrary.push(bookObject);
-  count += 1;
-  printLibrary(myLibrary[i]);
-}
-
-
 function Book(id, author, title, pages, read) {
   this.id = id;
   this.author = author;
@@ -74,7 +65,6 @@ function addBookToLibrary({
 }) {
   const book = new Book(id, author, title, pages, read);
   myLibrary.push(book);
-  localStorage.setItem(book.id, JSON.stringify(book));
 }
 
 function clear() {
