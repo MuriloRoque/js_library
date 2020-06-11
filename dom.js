@@ -1,3 +1,5 @@
+/* global myLibrary:true */
+
 function appendElement(element, parent, classElement = '') {
   const child = document.createElement(element);
   parent.appendChild(child).className = classElement;
@@ -19,3 +21,6 @@ function readBook(readButton) {
     }
   });
 }
+
+exports.appendElement = appendElement;
+exports.readBook = readBook;

@@ -1,3 +1,6 @@
+/* global appendElement */
+/* global readBook */
+
 const myLibrary = [];
 let count = 0;
 const container = document.querySelector('#books');
