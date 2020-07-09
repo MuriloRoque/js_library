@@ -1,4 +1,7 @@
+[![hire-badge](https://img.shields.io/badge/Consult%20/%20Hire%20Murilo-Click%20to%20Contact-brightgreen)](mailto:muriloengqui@gmail.com) [![Twitter Follow](https://img.shields.io/twitter/follow/MuriloRoquePai1?label=Follow%20Murilo%20on%20Twitter&style=social)](https://twitter.com/MuriloRoquePai1)
+
 # Library
+
 In this project, we will be building a library.
 
 # Screenshot
@@ -56,15 +59,7 @@ If you use ES6
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/MuriloRoque/library/issues)
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## 📝 License
-
